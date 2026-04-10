@@ -158,21 +158,38 @@ export default function App() {
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-3">
-            <div className="bg-blue-600 p-2 rounded-lg">
-              <Drone className="text-white" size={24} />
+            <div className="flex items-center justify-center">
+              <img 
+                src="/logo.png" 
+                alt="Aerosmart Logo" 
+                className="h-10 w-auto"
+                referrerPolicy="no-referrer"
+                onError={(e) => {
+                  // Fallback to icon if image fails to load
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement?.querySelector('.fallback-icon')?.classList.remove('hidden');
+                }}
+              />
+              <div className="fallback-icon hidden bg-blue-600 p-2 rounded-lg">
+                <Drone className="text-white" size={24} />
+              </div>
             </div>
             <div>
               <h1 className="text-xl font-black tracking-tighter text-slate-900 uppercase">Aerosmart</h1>
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">UAV Aerial Solutions</p>
+              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Unmanned Aerial Vehicle</p>
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-500">
             <a href="#algorithms" className="hover:text-blue-600 transition-colors">Algorithms</a>
             <a href="#timeline" className="hover:text-blue-600 transition-colors">Timeline</a>
             <a href="#payment" className="hover:text-blue-600 transition-colors">Terms</a>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+            <a 
+              href="/proposal.pdf" 
+              download="Aerosmart_Proposal.pdf"
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+            >
               Download PDF
-            </button>
+            </a>
           </div>
         </div>
       </header>
@@ -376,10 +393,15 @@ export default function App() {
               </div>
             </div>
 
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center space-x-2 group">
+            <a 
+              href="https://www.aerosmart.ae" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center space-x-2 group"
+            >
               <span>Accept Proposal</span>
               <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </a>
           </div>
         </section>
 
@@ -388,7 +410,15 @@ export default function App() {
       <footer className="bg-white border-t border-slate-200 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center space-x-2 opacity-50">
-            <Drone size={16} />
+            <img 
+              src="/logo.png" 
+              alt="Aerosmart Logo" 
+              className="h-4 w-auto grayscale"
+              referrerPolicy="no-referrer"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
             <span className="text-xs font-bold uppercase tracking-widest">Aerosmart UAV Trading © 2026</span>
           </div>
           <div className="flex space-x-6 text-xs font-medium text-slate-400">
